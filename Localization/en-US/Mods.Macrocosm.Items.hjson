@@ -2977,24 +2977,44 @@ ConveyorAttachmentTool: {
 		'''
 }
 
-ConveyorWrench: {
+ConveyorWrenchRed: {
 	DisplayName: Conveyor Wrench
 	Tooltip: Places red conveyor pipes from your inventory
 }
 
-ConveyorGreenWrench: {
+ConveyorWrenchGreen: {
 	DisplayName: Green Conveyor Wrench
 	Tooltip: Places green conveyor pipes from your inventory
 }
 
-ConveyorBlueWrench: {
+ConveyorWrenchBlue: {
 	DisplayName: Blue Conveyor Wrench
 	Tooltip: Places blue conveyor pipes from your inventory
 }
 
-ConveyorYellowWrench: {
+ConveyorWrenchYellow: {
 	DisplayName: Yellow Conveyor Wrench
 	Tooltip: Places yellow conveyor pipes from your inventory
+}
+
+PipeCutter: {
+	DisplayName: Pipe Cutter
+	Tooltip: Removes conveyor pipes and attachments
+}
+
+CrudeWireRed: {
+	DisplayName: Crude Red Wrench
+	Tooltip: Places red wire
+}
+
+CrudeWireBlue: {
+	DisplayName: Crude Blue Wrench
+	Tooltip: Places blue wire
+}
+
+CrudeWireCutter: {
+	DisplayName: Crude Wire Cutter
+	Tooltip: Cuts wires
 }
 
 HoneyCanister: {

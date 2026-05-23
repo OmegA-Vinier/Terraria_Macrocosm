@@ -25,6 +25,11 @@ public class VanillaNPCShop : GlobalNPC
                 shop.Add<Conveyor>();
                 shop.Add<ConveyorInlet>();
                 shop.Add<ConveyorOutlet>();
+                shop.Add<ConveyorWrenchRed>();
+                shop.Add<ConveyorWrenchGreen>();
+                shop.Add<ConveyorWrenchBlue>();
+                shop.Add<ConveyorWrenchYellow>();
+                shop.Add<PipeCutter>();
                 break;
         }
     }

@@ -1,4 +1,5 @@
-﻿using Macrocosm.Content.Items.Bars;
+using Macrocosm.Content.Items.Bars;
+using Macrocosm.Content.Items.Tech;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,6 +23,14 @@ public class AutocrafterT1 : ModItem
 
     public override void AddRecipes()
     {
-        // made in regular anvil
+        CreateRecipe()
+            .AddIngredient(ItemID.WorkBench)
+            .AddIngredient<SteelBar>(6)
+            .AddIngredient<AluminumBar>(6)
+            .AddIngredient<Gear>(2)
+            .AddIngredient<PrintedCircuitBoard>()
+            .AddIngredient(ItemID.Wire, 10)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

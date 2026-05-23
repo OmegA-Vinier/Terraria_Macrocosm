@@ -1,4 +1,7 @@
+using Macrocosm.Content.Items.Bars;
+using Macrocosm.Content.Items.Tech;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Macrocosm.Content.Items.Machines.Consumers.Autosmelters;
@@ -13,6 +16,17 @@ public class AutosmelterT1 : ModItem
         Item.value = Item.sellPrice(gold: 1);
         Item.mech = true;
     }
-// made in regular anvil
-}
 
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ItemID.Furnace)
+            .AddIngredient<SteelBar>(6)
+            .AddIngredient<AluminumBar>(6)
+            .AddIngredient<Gear>(2)
+            .AddIngredient<PrintedCircuitBoard>()
+            .AddIngredient(ItemID.Wire, 10)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
+}

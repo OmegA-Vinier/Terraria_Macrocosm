@@ -2,7 +2,7 @@ using Macrocosm.Common.Systems.Connectors;
 
 namespace Macrocosm.Content.Items.Connectors;
 
-public class ConveyorYellowWrench : ConveyorPipeWrench
+public class ConveyorWrenchYellow : ConveyorPipeWrench
 {
     public override ConveyorPipeType PipeType => ConveyorPipeType.YellowPipe;
 }
