@@ -20,9 +20,8 @@ public class AutosmelterT1 : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-            .AddIngredient(ItemID.Furnace)
+            .AddIngredient(ItemID.GrayBrick, 10)
             .AddIngredient<SteelBar>(6)
-            .AddIngredient<AluminumBar>(6)
             .AddIngredient<Gear>(2)
             .AddIngredient<PrintedCircuitBoard>()
             .AddIngredient(ItemID.Wire, 10)

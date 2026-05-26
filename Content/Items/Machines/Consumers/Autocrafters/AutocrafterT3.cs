@@ -1,5 +1,10 @@
-﻿using Terraria;
+﻿using Macrocosm.Content.Items.Tech;
+using Macrocosm.Content.Items.Bars;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Macrocosm.Content.Items.Refined;
+using Macrocosm.Content.Tiles.Crafting;
 
 namespace Macrocosm.Content.Items.Machines.Consumers.Autocrafters;
 
@@ -20,5 +25,13 @@ public class AutocrafterT3 : ModItem
 
     public override void AddRecipes()
     {
+        CreateRecipe()
+            .AddIngredient(ItemID.LunarBar, 20)
+            .AddIngredient<SteelBar>(15)
+            .AddIngredient<Plastic>(12)
+            .AddIngredient<AdvancedCircuitBoard>(12)
+            .AddIngredient(ItemID.Wire, 10)
+            .AddTile<Fabricator>()
+            .Register();
     }
 }

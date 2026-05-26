@@ -24,8 +24,6 @@ public class AutocrafterT1 : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-            .AddIngredient(ItemID.WorkBench)
-            .AddIngredient<SteelBar>(6)
             .AddIngredient<AluminumBar>(6)
             .AddIngredient<Gear>(2)
             .AddIngredient<PrintedCircuitBoard>()
