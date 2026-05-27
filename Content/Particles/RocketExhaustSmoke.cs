@@ -63,7 +63,7 @@ public class RocketExhaustSmoke : Particle
 
     public override void AI()
     {
-        DrawLayer = collided ? ParticleDrawLayer.AfterProjectiles : ParticleDrawLayer.BeforeNPCs;
+        DrawLayer = collided ? ParticleDrawLayer.AfterDust : ParticleDrawLayer.BeforeNPCs;
 
         if (FadeIn && FadeOut)
         {

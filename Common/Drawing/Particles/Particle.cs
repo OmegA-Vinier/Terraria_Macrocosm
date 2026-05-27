@@ -94,7 +94,7 @@ public abstract partial class Particle : ModTexturedType
     [NetSync] public int FrameSpeed;
 
     /// <summary> The draw layer of this <c>Particle</c>, see <see cref="ParticleDrawLayer"/>. Unused if <see cref="HasCustomDrawer"/>. </summary>
-    [NetSync] public ParticleDrawLayer DrawLayer = ParticleDrawLayer.AfterProjectiles;
+    [NetSync] public ParticleDrawLayer DrawLayer = ParticleDrawLayer.BeforeDust;
 
     protected int currentFrame = 0;
     protected int frameCounter = 0;

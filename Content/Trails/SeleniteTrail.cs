@@ -12,8 +12,9 @@ public class SeleniteTrail : VertexTrail
 {
     public Color Color { get; set; } = new Color(130, 220, 199, 255) * 1.4f;
     public float WidthMult;
+    private MiscShaderData shader;
 
-    public override MiscShaderData TrailShader => new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
         .UseProjectionMatrix(doUse: true)
         .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))
         .UseImage1(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Beam1"))

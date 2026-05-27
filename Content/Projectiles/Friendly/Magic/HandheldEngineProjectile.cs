@@ -212,6 +212,7 @@ public class HandheldEngineProjectile : ChargedHeldProjectile
     }
 
     private SpriteBatchState state1, state2;
+    private MiscShaderData trailShader;
 
     public override bool PreDraw(ref Color lightColor)
     {
@@ -233,14 +234,14 @@ public class HandheldEngineProjectile : ChargedHeldProjectile
         for (int i = 0; i < stripDataCount; i++)
             positions[i] += Utility.PolarVector(4f * i, Projectile.rotation);
 
-        var shader = new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+        trailShader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
             .UseProjectionMatrix(doUse: true)
             .UseSaturation(-2.4f)
             .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))
             .UseImage1(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "RocketExhaustTrail1"))
             .UseImage2(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "RocketExhaustTrail2"));
 
-        shader.Apply();
+        trailShader.Apply();
 
         strip.PrepareStrip(positions, rotations,
             (float progress) => Color.Lerp(

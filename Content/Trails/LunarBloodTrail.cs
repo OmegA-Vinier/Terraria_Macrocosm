@@ -12,7 +12,9 @@ public class LunarBloodTrail : VertexTrail
 {
     public Color BloodColour1 { get; set; } = new Color(94, 229, 163, 0);
     public Color BloodColour2 { get; set; } = new Color(213, 155, 148, 0);
-    public override MiscShaderData TrailShader => new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+    private MiscShaderData shader;
+
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
                     .UseProjectionMatrix(doUse: true)
                     .UseSaturation(Saturation)
                     .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))

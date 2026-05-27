@@ -154,18 +154,19 @@ public class DashPlayer : ModPlayer
         if (CanUseDash() && DashDirection != Direction.None && dashDelay == 0)
         {
             Vector2 newVelocity = Player.velocity;
+            float verticalVelocity = Player.velocity.Y * Player.gravDir;
 
             switch (DashDirection)
             {
                 // Only apply the dash velocity if our current speed in the wanted direction is less than DashVelocity
-                case Direction.Up when Player.velocity.Y > -AccDashSpeedY && AccDashVertical:
-                case Direction.Down when Player.velocity.Y < AccDashSpeedY && (AccDashVertical || AccDashDownwards):
+                case Direction.Up when verticalVelocity > -AccDashSpeedY && AccDashVertical:
+                case Direction.Down when verticalVelocity < AccDashSpeedY && (AccDashVertical || AccDashDownwards):
                     {
                         // Y-velocity is set here
                         // If the direction requested was DashUp, then we adjust the velocity to make the dash appear "faster" to compensate gravity being immediately in effect
                         // This adjustment is roughly 1.3x the intended dash velocity
                         float dashDirection = DashDirection == Direction.Down ? 1 : -1.3f;
-                        newVelocity.Y = dashDirection * AccDashSpeedY;
+                        newVelocity.Y = dashDirection * AccDashSpeedY * Player.gravDir;
                         if (!AccDashPreserveVelocity)
                             newVelocity.X = 0;
                         break;
@@ -279,7 +280,7 @@ public class DashPlayer : ModPlayer
                         if (Math.Abs(Player.velocity.X) > Math.Abs(Player.velocity.Y))
                             Player.velocity.X = -direction * AccDashSpeedX * 0.75f;
                         else
-                            Player.velocity.Y = -1f * AccDashSpeedY * 0.5f;
+                            Player.velocity.Y = -1f * AccDashSpeedY * 0.5f * Player.gravDir;
 
                         Player.GiveImmuneTimeForCollisionAttack(AccDashImmuneTime);
                         Player.eocHit = i;

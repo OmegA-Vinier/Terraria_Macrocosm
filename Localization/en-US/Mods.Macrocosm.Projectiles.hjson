@@ -203,3 +203,5 @@ ShredderBullet.DisplayName: Shredder Bullet
 ScrapShrapnel.DisplayName: Scrap Shrapnel
 LightningSpearProjectile.DisplayName: Lightning Spear
 MetalCutterProjectile.DisplayName: Metal Cutter
+CrudePhaserBolt.DisplayName: Crude Phaser Bolt
+CrudePhaserHeld.DisplayName: Crude Phaser Held

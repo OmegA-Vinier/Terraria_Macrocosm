@@ -12,6 +12,7 @@ public class FlamingMeteorTrail : VertexTrail
 {
     public Color Color;
     public int Width;
+    private MiscShaderData shader;
 
     public FlamingMeteorTrail(Color color)
     {
@@ -25,7 +26,7 @@ public class FlamingMeteorTrail : VertexTrail
         Width = width;
     }
 
-    public override MiscShaderData TrailShader => new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
         .UseProjectionMatrix(doUse: true)
         .UseSaturation(Saturation)
         .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutTrail"))

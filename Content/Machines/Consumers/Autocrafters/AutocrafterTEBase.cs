@@ -55,6 +55,12 @@ public abstract class AutocrafterTEBase : ConsumerTE
 
     public bool CanOverwriteRecipeAt(int outputSlot)
     {
+        if (outputSlot < 0 || outputSlot >= OutputSlots)
+            return false;
+
+        if (!Inventory[outputSlot].IsAir)
+            return false;
+
         if (!InputSlotAllocation.TryGetValue(outputSlot, out var slots))
             return true;
 

@@ -13,6 +13,7 @@ public class LightningTrail : VertexTrail
 {
     public Color Color;
     public float Width;
+    private MiscShaderData shader;
 
     public LightningTrail(Color color, float width)
     {
@@ -20,7 +21,7 @@ public class LightningTrail : VertexTrail
         Width = width;
     }
 
-    public override MiscShaderData TrailShader => new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
         .UseProjectionMatrix(doUse: true)
         .UseSaturation(Saturation)
         .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))

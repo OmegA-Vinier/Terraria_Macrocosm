@@ -11,8 +11,9 @@ namespace Macrocosm.Content.Trails;
 public class StarTrail : VertexTrail
 {
     public Color Color { get; set; } = new Color(100, 100, 255, 0);
+    private MiscShaderData shader;
 
-    public override MiscShaderData TrailShader => new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
         .UseProjectionMatrix(doUse: true)
         .UseSaturation(Saturation)
         .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutTrail"))

@@ -7,7 +7,10 @@ using Macrocosm.Content.Biomes;
 using Macrocosm.Content.Dusts;
 using Macrocosm.Content.Items.Accessories;
 using Macrocosm.Content.Items.Armor.Vanity.MoonChampion;
+using Macrocosm.Content.Items.Weapons.Magic;
 using Macrocosm.Content.Items.Weapons.Melee;
+using Macrocosm.Content.Items.Weapons.Ranged;
+using Macrocosm.Content.Items.Weapons.Summon.Sentries;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -169,6 +172,11 @@ public class MoonChampion : ModNPC
         AddNewSlot(ModContent.ItemType<MoonChampionSuit>(), 20);
         AddNewSlot(ModContent.ItemType<MoonChampionLeggings>(), 20);
         AddNewSlot(ModContent.ItemType<MannedManeuveringUnit>(), 50);
+
+        Condition downedCraterDemon = new(LocalizedText.Empty, () => WorldData.DownedCraterDemon);
+        AddNewSlot(ModContent.ItemType<CrudePhaser>(), 50, downedCraterDemon);
+        AddNewSlot(ModContent.ItemType<ScrapshotBow>(), 50, downedCraterDemon);
+        AddNewSlot(ModContent.ItemType<MoonChampionSentry>(), 50, downedCraterDemon);
 
         AddNewSlot(ModContent.ItemType<CrescentScripture>(), 50, new Condition(LocalizedText.Empty, () => WorldData.LuminiteShrineUnlocked));
 

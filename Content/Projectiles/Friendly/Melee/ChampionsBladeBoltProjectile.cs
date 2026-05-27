@@ -55,6 +55,7 @@ internal class ChampionsBladeBoltProjectile : ModProjectile
     }
 
     private ref float SkewMultiplier => ref Projectile.ai[0];
+    private MiscShaderData trailShader;
     private float visualScale;
     public override void OnSpawn(IEntitySource source)
     {
@@ -108,12 +109,13 @@ internal class ChampionsBladeBoltProjectile : ModProjectile
 
         var strip = new VertexStrip();
 
-        GameShaders.Misc["MagicMissile"]
+        trailShader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
             .UseProjectionMatrix(true)
             .UseImage0(TextureAssets.MagicPixel)
             .UseImage1(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark7"))
-            .UseImage2(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark6"))
-            .Apply();
+            .UseImage2(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark6"));
+
+        trailShader.Apply();
 
         var positions = (Vector2[])Projectile.oldPos.Clone();
         for (int i = 1; i < positions.Length; i++)

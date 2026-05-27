@@ -136,6 +136,9 @@ public class LightningSpearProjectile : ModProjectile
         
     }
     private SpriteBatchState state1;
+    private MiscShaderData trailShader;
+    private MiscShaderData trailShader2;
+
     public override bool PreDraw(ref Color lightColor)
     {
         Texture2D texture = TextureAssets.Projectile[Type].Value;
@@ -155,14 +158,14 @@ public class LightningSpearProjectile : ModProjectile
             for (int i = 0; i < stripDataCount; i++)
                 positions[i] += Utility.PolarVector(4f * i, Projectile.rotation + (MathHelper.Pi));
 
-            var shader = new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+            trailShader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
                 .UseProjectionMatrix(doUse: true)
                 .UseSaturation(-2.4f)
                 .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))
                 .UseImage1(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark5"))
                 .UseImage2(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark6"));
 
-            shader.Apply();
+            trailShader.Apply();
 
             strip.PrepareStrip(positions, rotations,
                 (float progress) => new Color(98, 204, 255, 0),
@@ -178,14 +181,14 @@ public class LightningSpearProjectile : ModProjectile
             for (int i = 0; i < stripDataCount; i++)
                 positions2[i] += Utility.PolarVector(4f * i, Projectile.rotation );
 
-            var shader2 = new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+            trailShader2 ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
                 .UseProjectionMatrix(doUse: true)
                 .UseSaturation(-2.4f)
                 .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))
                 .UseImage1(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark5"))
                 .UseImage2(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "Spark6"));
 
-            shader2.Apply();
+            trailShader2.Apply();
 
             strip2.PrepareStrip(positions2, rotations2,
                 (float progress) => new Color(98, 204, 255, 0),

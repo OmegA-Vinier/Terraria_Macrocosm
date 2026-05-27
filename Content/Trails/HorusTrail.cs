@@ -10,7 +10,9 @@ namespace Macrocosm.Content.Trails;
 
 public class HorusTrail : VertexTrail
 {
-    public override MiscShaderData TrailShader => new MiscShaderData(shader: Utility.VanillaVertexShader, "MagicMissile")
+    private MiscShaderData shader;
+
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(shader: Utility.VanillaVertexShader, "MagicMissile")
         .UseProjectionMatrix(doUse: true)
         .UseSaturation(Saturation)
         .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutTrail"))

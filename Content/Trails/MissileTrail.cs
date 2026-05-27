@@ -1,4 +1,5 @@
 ﻿using Macrocosm.Common.Drawing.Trails;
+using Macrocosm.Common.Utils;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Graphics.Shaders;
@@ -7,7 +8,9 @@ namespace Macrocosm.Content.Trails;
 
 public class MissileTrail : VertexTrail
 {
-    public override MiscShaderData TrailShader => GameShaders.Misc["RainbowRod"];
+    private MiscShaderData shader;
+
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "RainbowRod");
     public override float Saturation => -1.9f;
 
     public override int StartIndex => 0;

@@ -15,8 +15,8 @@ namespace Macrocosm.Common.Drawing.Particles;
 
 public enum ParticleDrawLayer
 {
-    BeforeProjectiles,
-    AfterProjectiles,
+    BeforeDust,
+    AfterDust,
     BeforeNPCs,
     AfterNPCs,
     BeforeTiles,
@@ -39,7 +39,7 @@ public class ParticleManager : ModSystem, IOnPlayerJoining
         ParticlePools = new Dictionary<Type, Stack<Particle>>();
 
         On_Main.DrawBlack += DrawParticles_Tiles;
-        On_Main.DrawProjectiles += DrawParticles_Projectiles;
+        On_Main.DrawDust += DrawParticles_Dust;
         On_Main.DrawNPCs += DrawParticles_NPCs;
     }
 
@@ -51,7 +51,7 @@ public class ParticleManager : ModSystem, IOnPlayerJoining
         ParticlePools = null;
 
         On_Main.DrawBlack -= DrawParticles_Tiles;
-        On_Main.DrawProjectiles -= DrawParticles_Projectiles;
+        On_Main.DrawDust -= DrawParticles_Dust;
         On_Main.DrawNPCs -= DrawParticles_NPCs;
     }
 
@@ -250,12 +250,12 @@ public class ParticleManager : ModSystem, IOnPlayerJoining
         spriteBatch.Begin(state2);
     }
 
-    private void DrawParticles_Projectiles(On_Main.orig_DrawProjectiles orig, Main self)
+    private void DrawParticles_Dust(On_Main.orig_DrawDust orig, Main self)
     {
         SpriteBatch spriteBatch = Main.spriteBatch;
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, RasterizerState.CullNone, default, Main.Transform);
 
-        DrawParticles(ParticleDrawLayer.BeforeProjectiles);
+        DrawParticles(ParticleDrawLayer.BeforeDust);
 
         spriteBatch.End();
 
@@ -263,7 +263,7 @@ public class ParticleManager : ModSystem, IOnPlayerJoining
 
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, default, default, RasterizerState.CullNone, default, Main.Transform);
 
-        DrawParticles(ParticleDrawLayer.AfterProjectiles);
+        DrawParticles(ParticleDrawLayer.AfterDust);
 
         spriteBatch.End();
     }

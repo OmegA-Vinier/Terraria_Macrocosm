@@ -17,8 +17,6 @@ namespace Macrocosm.Content.Rockets;
 
 public enum RocketDrawLayer
 {
-    BeforeProjectiles,
-    AfterProjectiles,
     BeforeNPCs,
     AfterNPCs
 }
@@ -32,7 +30,6 @@ public class RocketManager : ModSystem, IOnPlayerJoining
     public override void Load()
     {
         On_Main.DoDraw_DrawNPCsBehindTiles += On_Main_DoDraw_DrawNPCsBehindTiles;
-        On_Main.DrawProjectiles += DrawRockets_Projectiles;
         On_Main.DrawNPCs += DrawRockets_NPCs;
         On_Main.DrawDust += DrawRockets_OverlaysAfterDusts;
     }
@@ -49,7 +46,6 @@ public class RocketManager : ModSystem, IOnPlayerJoining
         Rockets = null;
 
         On_Main.DoDraw_DrawNPCsBehindTiles -= On_Main_DoDraw_DrawNPCsBehindTiles;
-        On_Main.DrawProjectiles -= DrawRockets_Projectiles;
         On_Main.DrawNPCs -= DrawRockets_NPCs;
         On_Main.DrawDust -= DrawRockets_OverlaysAfterDusts;
     }
@@ -261,34 +257,6 @@ public class RocketManager : ModSystem, IOnPlayerJoining
 
         spriteBatch.End();
         spriteBatch.Begin(state2);
-    }
-
-    private void DrawRockets_Projectiles(On_Main.orig_DrawProjectiles orig, Main self)
-    {
-        SpriteBatch spriteBatch = Main.spriteBatch;
-        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, default, RasterizerState.CullNone, default, Main.Transform);
-
-        DrawRockets(RocketDrawLayer.BeforeProjectiles);
-
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, default, RasterizerState.CullNone, default, Main.Transform);
-
-        PostDrawRockets(RocketDrawLayer.BeforeProjectiles);
-
-        spriteBatch.End();
-
-        orig(self);
-
-        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, default, RasterizerState.CullNone, default, Main.Transform);
-
-        DrawRockets(RocketDrawLayer.AfterProjectiles);
-
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, default, RasterizerState.CullNone, default, Main.Transform);
-
-        PostDrawRockets(RocketDrawLayer.AfterProjectiles);
-
-        spriteBatch.End();
     }
 
     private void DrawRockets_OverlaysAfterDusts(On_Main.orig_DrawDust orig, Main self)

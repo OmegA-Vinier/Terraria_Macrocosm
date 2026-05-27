@@ -697,6 +697,11 @@ CalcicCane: {
 	Tooltip: Summons a Crater Imp to fight for you
 }
 
+CrudePhaser: {
+	DisplayName: Crude Phaser
+	Tooltip: Fires a three-shot burst; the first shot phases through enemies
+}
+
 ChandriumStaff: {
 	DisplayName: Chandrium Staff
 	Tooltip: Summons a Crescent Ghoul to fight for you

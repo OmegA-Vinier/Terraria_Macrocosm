@@ -24,6 +24,7 @@ public abstract class BaseEngineModule : AnimatedRocketModule
 
 
     private SpriteBatchState state1, state2;
+    private MiscShaderData trailShader;
     public override void PreDrawBeforeTiles(SpriteBatch spriteBatch, Vector2 position, bool inWorld)
     {
         // Draw the exhaust trail 
@@ -105,14 +106,14 @@ public abstract class BaseEngineModule : AnimatedRocketModule
             rotations[i] = MathHelper.Pi + MathHelper.PiOver2 + Rocket.Rotation;
         }
 
-        var shader = new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
+        trailShader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile")
             .UseProjectionMatrix(doUse: false)
             .UseSaturation(-2.2f)
             .UseImage0(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "FadeOutMask"))
             .UseImage1(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "RocketExhaustTrail2"))
             .UseImage2(ModContent.Request<Texture2D>(Macrocosm.FancyTexturesPath + "RocketExhaustTrail2"));
 
-        shader.Apply();
+        trailShader.Apply();
 
         strip.PrepareStrip(
             positions,

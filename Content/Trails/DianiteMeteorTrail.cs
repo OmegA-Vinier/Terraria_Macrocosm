@@ -1,4 +1,5 @@
 ﻿using Macrocosm.Common.Drawing.Trails;
+using Macrocosm.Common.Utils;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Graphics.Shaders;
@@ -7,7 +8,9 @@ namespace Macrocosm.Content.Trails;
 
 public class DianiteMeteorTrail : VertexTrail
 {
-    public override MiscShaderData TrailShader => GameShaders.Misc["FlameLash"];
+    private MiscShaderData shader;
+
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "FlameLash");
     public override float Saturation => -1.4f;
     public override int StartIndex => 0;
 

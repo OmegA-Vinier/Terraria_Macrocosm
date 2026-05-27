@@ -1,4 +1,5 @@
 ﻿using Macrocosm.Common.Drawing.Trails;
+using Macrocosm.Common.Utils;
 using Microsoft.Xna.Framework;
 using Terraria.Graphics.Shaders;
 
@@ -6,7 +7,9 @@ namespace Macrocosm.Content.Trails;
 
 public class ImbriumMeteorTrail : VertexTrail
 {
-    public override MiscShaderData TrailShader => GameShaders.Misc["MagicMissile"];
+    private MiscShaderData shader;
+
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile");
 
     public override Color TrailColors(float progressOnStrip)
     {

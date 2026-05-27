@@ -27,12 +27,12 @@ public abstract class VertexTrail : IModType
     public virtual int StartIndex => 1;
 
     public virtual void Update() { }
-    private void InternalUpdate()
+    private void InternalUpdate(MiscShaderData trailShader)
     {
         Update();
 
-        TrailShader.UseOpacity(Opacity);
-        TrailShader.UseSaturation(Saturation);
+        trailShader.UseOpacity(Opacity);
+        trailShader.UseSaturation(Saturation);
     }
 
     public virtual void Draw(Projectile projectile, Vector2 offset = default) => Draw(projectile.oldPos, projectile.oldRot, offset);
@@ -42,10 +42,11 @@ public abstract class VertexTrail : IModType
     public virtual void Draw(Vector2[] positions, float[] rotations, Vector2 offset = default)
     {
         VertexStrip vertexStrip = new();
+        MiscShaderData trailShader = TrailShader;
 
-        InternalUpdate();
+        InternalUpdate(trailShader);
 
-        TrailShader.Apply();
+        trailShader.Apply();
 
         vertexStrip.PrepareStripWithProceduralPadding(positions[StartIndex..], rotations[StartIndex..], TrailColors, TrailWidths, offset - Main.screenPosition, false, true);
         vertexStrip.DrawTrail();
