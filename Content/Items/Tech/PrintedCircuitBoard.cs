@@ -26,7 +26,6 @@ public class PrintedCircuitBoard : ModItem
     {
         CreateRecipe()
           .AddIngredient<Silicon>(6)
-          .AddIngredient<Plastic>(1)
           .AddIngredient(ItemID.Wire, 10)
           .AddIngredient(ItemID.SilverBar, 1)
           .AddTile(TileID.WorkBenches)

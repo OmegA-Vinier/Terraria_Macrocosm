@@ -1,4 +1,6 @@
 using Macrocosm.Common.Sets;
+using Macrocosm.Content.Items.Ores;
+using Macrocosm.Content.Items.Refined;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,14 +26,14 @@ public class AdvancedCircuitBoard : ModItem
 
     public override void AddRecipes()
     {
-        /*
+        
         CreateRecipe()
-          .AddIngredient<Silicon>(6)
-          .AddIngredient<Plastic>(1)
-          .AddIngredient(ItemID.Wire, 10)
-          .AddIngredient(ItemID.SilverBar, 1)
+          .AddIngredient<Silicon>(9)
+          .AddIngredient<Plastic>(5)
+          .AddIngredient(ItemID.Wire, 15)
+          .AddIngredient(ItemID.GoldBar, 1)
           .AddTile<Tiles.Crafting.Fabricator>()
           .Register();
-        */
+        
     }
 }
