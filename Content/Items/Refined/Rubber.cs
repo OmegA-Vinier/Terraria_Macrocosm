@@ -27,7 +27,7 @@ public class Rubber : ModItem
         CreateRecipe()
             .AddIngredient<RubberSap>(3)
             .AddIngredient<Coal>()
-            .AddTile(TileID.AlchemyTable)
+            .AddTile(TileID.Bottles)
             .Register();
     }
 }

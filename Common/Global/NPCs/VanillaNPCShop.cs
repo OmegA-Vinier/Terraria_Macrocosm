@@ -32,6 +32,8 @@ public class VanillaNPCShop : GlobalNPC
                 shop.Add<ConveyorWrenchBlue>();
                 shop.Add<ConveyorWrenchYellow>();
                 shop.Add<PipeCutter>();
+                shop.Add<Hopper>();
+                shop.Add<Dropper>();
                 break;
         }
     }
