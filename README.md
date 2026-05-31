@@ -47,6 +47,7 @@ scss - Programmer \
 Yttrium - Tester
 
 ### Contributors
+ADVERSE KC - Spriter \
 Dominick - Spriter \
 Ebonfly - Programmer \
 EduaRRdo - Spriter \
@@ -61,7 +62,7 @@ Nurby - Programmer \
 Thanatos - Programmer, Composer
 
 ### Special thanks
-4mbr0s3, absoluteAquarian, ADVERSE KC, Almarduk, Delly, Dracos_V2, Draedon_Gaming, DrakonVörðr, Kiraa, Kirito, Master-Bit, Snowfall-The-Cat
+4mbr0s3, absoluteAquarian, Almarduk, Delly, Dracos_V2, Draedon_Gaming, DrakonVörðr, Kiraa, Kirito, Master-Bit, Snowfall-The-Cat
 
 </center>
 
