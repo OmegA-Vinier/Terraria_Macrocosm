@@ -25,6 +25,7 @@ Feldy - Moderator, Programmer
 Lincolnennis - Composer \
 Sc0p3r - Composer \
 TYESKI - Composer \
+Super (SMZ) - Composer \
 Zetry - Soundsmith
 
 Dandy - Spriter \
@@ -33,7 +34,6 @@ dontkickmychick - Scholar \
 Dovahkick - Spriter \
 Goat - Artist, Spriter \
 OmegA-Vinier - Spriter, Programmer \
-pil - Spriter \
 Rocket - Spriter \
 SpicySpaceSnake - Spriter \
 Uncon_Arts - Artist \
@@ -47,9 +47,11 @@ scss - Programmer \
 Yttrium - Tester
 
 ### Contributors
+ADVERSE KC - Spriter \
 Dominick - Spriter \
 Ebonfly - Programmer \
 EduaRRdo - Spriter \
+Hatrednotfound - Programmer \
 IamPolaaris - Spriter \
 Jamiscus - Spriter \
 Lion8cake - Programmer \
@@ -60,7 +62,7 @@ Nurby - Programmer \
 Thanatos - Programmer, Composer
 
 ### Special thanks
-4mbr0s3, absoluteAquarian, ADVERSE KC, Almarduk, Delly, Dracos_V2, Draedon_Gaming, DrakonVörðr, Kiraa, Kirito, Master-Bit, Snowfall-The-Cat
+4mbr0s3, absoluteAquarian, Almarduk, Delly, Dracos_V2, Draedon_Gaming, DrakonVörðr, Kiraa, Kirito, Master-Bit, Snowfall-The-Cat
 
 </center>
 
