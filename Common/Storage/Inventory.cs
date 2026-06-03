@@ -42,6 +42,8 @@ public partial class Inventory : IEnumerable<Item>
     private Asset<Texture2D>[] reservedTextures;
     private Color?[] reservedColors;
 
+    public Func<int, Item, bool> CanInsertIntoSlot { get; set; }
+
     public Item this[int index]
     {
         get => items[index];
@@ -343,7 +345,7 @@ public partial class Inventory : IEnumerable<Item>
                 if (fromPlayer && !uiItemSlots[i].CanInteractWithItem)
                     continue;
 
-                if (fromPlayer && GetSlotRole(i) == InventorySlotRole.OutputLocked)
+                if (!CanPlaceIntoSlot(i, item, fromPlayer))
                     continue;
 
                 if (!ignoreReserved && !ReservedCheck(i, item))
@@ -402,6 +404,9 @@ public partial class Inventory : IEnumerable<Item>
                 if (!uiItemSlots[j].CanInteractWithItem)
                     continue;
 
+                if (!CanPlaceIntoSlot(j, item, fromPlayer))
+                    continue;
+
                 if (!ignoreReserved && !ReservedCheck(j, item))
                     continue;
 
@@ -430,6 +435,17 @@ public partial class Inventory : IEnumerable<Item>
         }
 
         return result;
+    }
+
+    private bool CanPlaceIntoSlot(int slot, Item item, bool fromPlayer)
+    {
+        if (!fromPlayer)
+            return true;
+
+        if (GetSlotRole(slot) == InventorySlotRole.OutputLocked)
+            return false;
+
+        return CanInsertIntoSlot?.Invoke(slot, item) ?? true;
     }
 
     public bool TryPlacingItemInSlot(ref Item item, int slot, bool justCheck = false, bool fromPlayer = false, bool sound = true, bool serverSync = true, bool ignoreReserved = false)

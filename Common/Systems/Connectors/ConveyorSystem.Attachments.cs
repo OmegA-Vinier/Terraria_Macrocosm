@@ -576,7 +576,8 @@ public partial class ConveyorSystem
     {
         InventorySlotRole role = inventory.GetSlotRole(slot);
         return role is InventorySlotRole.General or InventorySlotRole.Input
-            && inventory.ReservedCheck(slot, item);
+            && inventory.ReservedCheck(slot, item)
+            && (inventory.CanInsertIntoSlot?.Invoke(slot, item) ?? true);
     }
 
     private static bool CanExtractFromInventorySlot(Inventory inventory, int slot)

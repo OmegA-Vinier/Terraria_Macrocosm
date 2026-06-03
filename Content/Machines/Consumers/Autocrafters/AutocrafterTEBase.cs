@@ -41,6 +41,22 @@ public abstract class AutocrafterTEBase : ConsumerTE
 
         for (int i = OutputSlots; i < Inventory.Size; i++)
             Inventory.SetSlotRole(i, InventorySlotRole.Input);
+
+        Inventory.CanInsertIntoSlot = CanInsertIntoSlot;
+    }
+
+    private bool CanInsertIntoSlot(int slot, Item item)
+    {
+        if (slot < OutputSlots)
+            return false;
+
+        if (SelectedRecipes is null)
+            return false;
+
+        return InputSlotAllocation.Values
+            .SelectMany(slots => slots)
+            .Contains(slot)
+            && Inventory.ReservedCheck(slot, item);
     }
 
     public virtual bool RecipeAllowed(Recipe recipe)
