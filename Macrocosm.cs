@@ -51,6 +51,8 @@ public class Macrocosm : Mod
         new(194, 45, 3),
         new(24, 0, 63)
     }, 0, 0.15f);
+    private static ChromaShader meteorSwarmShader = new MeteorRainShader(new Color(255, 90, 0f));
+    private static ChromaShader moonUGShader = new CavernShader(new Color(15, 15, 15), new Color(90, 90, 90), 0.5f);
 
     public override void Load()
     {
@@ -124,6 +126,8 @@ public class Macrocosm : Mod
         Main.Chroma.RegisterShader(moonOrbitShader, new MoonOrbitShaderCondition(), ShaderLayer.Biome);
         Main.Chroma.RegisterShader(moonShader, new MoonShaderCondition(), ShaderLayer.Biome);
         Main.Chroma.RegisterShader(pollutionShader, new PollutionShaderCondition(), ShaderLayer.BiomeModifier);
+        Main.Chroma.RegisterShader(meteorSwarmShader, new MeteorShowerShaderCondition(), ShaderLayer.Weather);
+        Main.Chroma.RegisterShader(moonUGShader, new MoonUndergroundCondition(), ShaderLayer.Biome);
     }
 
     private static void UnloadRGB()
@@ -132,6 +136,8 @@ public class Macrocosm : Mod
         Main.Chroma.UnregisterShader(moonOrbitShader);
         Main.Chroma.UnregisterShader(moonShader);
         Main.Chroma.UnregisterShader(pollutionShader);
+        Main.Chroma.UnregisterShader(meteorSwarmShader);
+        Main.Chroma.UnregisterShader(moonUGShader);
     }
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {

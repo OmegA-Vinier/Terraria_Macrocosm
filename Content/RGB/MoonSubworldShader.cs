@@ -60,8 +60,8 @@ public class MoonSubworldShader(Color main1, Color main2) : ChromaShader
     {
         Vector4 mainColor1 = MainColor1.ToVector4() * TimeMultiplier;
         Vector4 mainColor2 = MainColor2.ToVector4() * TimeMultiplier;
-        mainColor1.W = 255;
-        mainColor2.W = 255;
+        mainColor1.W = 1;
+        mainColor2.W = 1;
         for (int i = 0; i < fragment.Count; i++)
         {
             Vector2 canvasPosition = fragment.GetCanvasPositionOfIndex(i);
