@@ -68,10 +68,10 @@ public class MoonChampionSentry : ModProjectile
             Vector2 turningVector = (targetCenter - TurretHeadCenter).SafeNormalize(Vector2.UnitX);
             turretRotation = (new Vector2(5, 0).RotatedBy(turretRotation) + (turningVector * 0.6f)).ToRotation();
             timer++;
-            if (timer % 10 == 0 && timer > 59)
+            if (timer % 10 == 0 && timer > 59 && Projectile.owner == Main.myPlayer)
             {
                 Vector2 muzzlePosition = TurretHeadCenter + CurrentMuzzleOffset.RotatedBy(turretRotation);
-                Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), muzzlePosition, new Vector2(16f, 0).RotatedBy(turretRotation), ModContent.ProjectileType<MoonChampionSentryRocket>(), Projectile.damage / 2, 1f, Main.myPlayer);
+                Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), muzzlePosition, new Vector2(16f, 0).RotatedBy(turretRotation), ModContent.ProjectileType<MoonChampionSentryRocket>(), Projectile.damage / 2, 1f, Projectile.owner);
                 p.DamageType = DamageClass.Summon;
                 muzzleIndex = (muzzleIndex + 1) % MuzzleOffsets.Length;
                 offset = 5f;

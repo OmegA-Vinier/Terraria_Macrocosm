@@ -3085,21 +3085,29 @@ Craterfish: {
 DunceCraterfish: {
 	DisplayName: Dunce Craterfish
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught on the Moon
 }
 
 HermitCan: {
 	DisplayName: Hermit Can
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught on the Moon
 }
 
 MutatedGoldfish: {
 	DisplayName: Mutated Goldfish
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught in the Pollution
 }
 
 SmogWispfish: {
 	DisplayName: Smog Wispfish
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught in the Pollution
 }
 
 RadioactiveSlimeBannerItem: {

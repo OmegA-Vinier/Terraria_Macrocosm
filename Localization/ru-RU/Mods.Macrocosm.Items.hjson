@@ -3057,21 +3057,29 @@ Craterfish: {
 DunceCraterfish: {
 	DisplayName: Глупая кратерная рыба
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught on the Moon
 }
 
 HermitCan: {
 	DisplayName: Банка-отшельник
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught on the Moon
 }
 
 MutatedGoldfish: {
 	DisplayName: Золотая рыбка-мутант
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught in the Pollution
 }
 
 SmogWispfish: {
 	DisplayName: Блуждающая рыба-смог
 	Tooltip: ""
+	AnglerDescription: ""
+	AnglerLocation: Caught in the Pollution
 }
 
 RadioactiveSlimeBannerItem: {

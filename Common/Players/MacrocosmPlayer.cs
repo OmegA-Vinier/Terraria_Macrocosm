@@ -1,4 +1,5 @@
 ﻿using Macrocosm.Common.Netcode;
+using Macrocosm.Common.Subworlds;
 using Macrocosm.Common.Systems;
 using Macrocosm.Content.Achievements;
 using Macrocosm.Content.Buffs.Environment;
@@ -199,11 +200,14 @@ public class MacrocosmPlayer : ModPlayer
 
     public void HandleAchievements()
     {
+        if (Player.whoAmI != Main.myPlayer)
+            return;
+
         if (SubworldSystem.IsActive<Moon>())
         {
             var surviveMoon = GetInstance<SurviveMoon>();
             if (surviveMoon?.Condition != null)
-                surviveMoon.Condition.Value += 1f;
+                surviveMoon.Condition.Value += (float)MacrocosmSubworld.CurrentTimeRate;
 
             if (TileCounts.Instance.HasApolloLander)
                 GetInstance<FindApolloLander>()?.Condition?.Complete();

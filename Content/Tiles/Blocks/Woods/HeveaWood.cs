@@ -16,10 +16,6 @@ public class HeveaWood : ModTile
 
         Main.tileMergeDirt[Type] = true;
 
-
-        // Only to avoid slope slicing, TileFrame code is different
-        TileID.Sets.HasSlopeFrames[Type] = true;
-
         TileID.Sets.ChecksForMerge[Type] = true;
 
 

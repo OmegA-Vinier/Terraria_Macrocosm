@@ -21,7 +21,9 @@ public class DemonSunEvent : MacrocosmEvent
     public override void Update(MacrocosmEventContext context, MacrocosmEventState state)
     {
         DemonSunEventState demonSunState = (DemonSunEventState)state;
-        Main.bloodMoon = state.Active;
+
+        if (state.Active)
+            Main.bloodMoon = true;
 
         demonSunState.TargetVisualIntensity = state.Active && AppliesVisuals(context.CurrentSubworld) ? 1f : 0f;
 
@@ -47,12 +49,14 @@ public class DemonSunEvent : MacrocosmEvent
 
     public override void LoadState(MacrocosmEventState state, TagCompound tag)
     {
-        Main.bloodMoon = state.Active;
+        if (state.Active)
+            Main.bloodMoon = true;
     }
 
     public override void NetReceiveState(MacrocosmEventState state, System.IO.BinaryReader reader)
     {
-        Main.bloodMoon = state.Active;
+        if (state.Active)
+            Main.bloodMoon = true;
     }
 
     private static DemonSunEventState GetState()

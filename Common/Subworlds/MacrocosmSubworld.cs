@@ -250,7 +250,9 @@ public abstract partial class MacrocosmSubworld : Subworld
 
     private void UpdateInvasions()
     {
-        Main.bloodMoon = MacrocosmEventSystem.IsActive<Content.Events.DemonSunEvent>();
+        if (MacrocosmEventSystem.IsActive<Content.Events.DemonSunEvent>())
+            Main.bloodMoon = true;
+
         Main.pumpkinMoon = false;
         Main.snowMoon = false;
         Main.eclipse = false;

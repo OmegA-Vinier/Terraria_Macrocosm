@@ -1,5 +1,6 @@
 using Macrocosm.Common.Netcode;
 using Macrocosm.Common.Systems;
+using Macrocosm.Common.Utils;
 using Macrocosm.Content.RGB;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -69,6 +70,7 @@ public class Macrocosm : Mod
 
     public override void Unload()
     {
+        Utility.UnloadGraphicsAssets();
         UnloadResprites();
         UnloadEffects();
         UnloadRGB();

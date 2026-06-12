@@ -31,6 +31,9 @@ public class SmogWisp : ModNPC
         );
 
         NPCSets.Material[Type] = NPCMaterial.Supernatural;
+        NPCID.Sets.TrailCacheLength[Type] = 25;
+        NPCID.Sets.TrailingMode[Type] = 3;
+
         Redemption.AddElementToNPC(Type, Redemption.ElementID.Arcane);
         Redemption.AddElementToNPC(Type, Redemption.ElementID.Wind);
         Redemption.AddNPCToElementList(Type, Redemption.NPCType.Spirit);
@@ -60,7 +63,7 @@ public class SmogWisp : ModNPC
     {
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.InModBiome<PollutionBiome>() ||  spawnInfo.Player.InModBiome<UndergroundPollutionBiome>() && (spawnInfo.SpawnTileY < spawnInfo.Player.Center.Y + 40) ? 1f : 0f;
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.InModBiome<PollutionBiome>() || spawnInfo.Player.InModBiome<UndergroundPollutionBiome>() && (spawnInfo.SpawnTileY < spawnInfo.Player.Center.Y + 40) ? 1f : 0f;
 
     public override void ModifyNPCLoot(NPCLoot loot)
     {
@@ -88,6 +91,7 @@ public class SmogWisp : ModNPC
     int smogTimer = 0;
     public override void AI()
     {
+
         if (++smogTimer % 5 == 0)
         {
             Smoke smoke = Particle.Create<Smoke>((p) =>
@@ -167,13 +171,8 @@ public class SmogWisp : ModNPC
 
     public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
     {
-        if (NPC.IsABestiaryIconDummy)
-            NPC.Opacity = 0.7f;
-
-        NPCID.Sets.TrailCacheLength[Type] = 25;
-        NPCID.Sets.TrailingMode[Type] = 3;
-
         SpriteEffects effects = NPC.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipVertically;
+
         int length = NPC.oldPos.Length;
         for (int i = 1; i < length; i++)
         {
@@ -193,7 +192,17 @@ public class SmogWisp : ModNPC
         }
 
         Main.EntitySpriteDraw(TextureAssets.Npc[Type].Value, NPC.position + NPC.frame.Size() / 2f - Main.screenPosition, NPC.frame, drawColor * NPC.Opacity, NPC.rotation, NPC.frame.Size() / 2f, NPC.scale, effects, 0f);
+
+        if (NPC.IsABestiaryIconDummy)
+        {
+            NPC.Opacity = 0.7f;
+            NPC.rotation = 0f;
+            NPC.direction = 1;
+            return true;
+        }
+
         return false;
+
     }
 
 

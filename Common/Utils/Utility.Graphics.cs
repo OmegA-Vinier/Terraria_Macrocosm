@@ -17,12 +17,20 @@ public static partial class Utility
 
     private static Asset<Effect> _vanillaScreenShader;
     private static Asset<Effect> _vanillaPixelShader;
+    private static Asset<Effect> _vanillaVertexShader;
     private static Asset<Effect> _vanillaTileShader;
     public static Asset<Effect> VanillaScreenShader => _vanillaScreenShader ??= ModContent.Request<Effect>("Terraria/ScreenShader", AssetRequestMode.ImmediateLoad);
     public static Asset<Effect> VanillaPixelShader => _vanillaPixelShader ??= ModContent.Request<Effect>("Terraria/PixelShader", AssetRequestMode.ImmediateLoad);
-    public static Asset<Effect> VanillaVertexShader => _vanillaPixelShader ??= ModContent.Request<Effect>("Terraria/PixelShader", AssetRequestMode.ImmediateLoad);
+    public static Asset<Effect> VanillaVertexShader => _vanillaVertexShader ??= ModContent.Request<Effect>("Terraria/PixelShader", AssetRequestMode.ImmediateLoad);
     public static Asset<Effect> VanillaTileShader => _vanillaTileShader ??= ModContent.Request<Effect>("Terraria/TileShader", AssetRequestMode.ImmediateLoad);
 
+    public static void UnloadGraphicsAssets()
+    {
+        _vanillaScreenShader = null;
+        _vanillaPixelShader = null;
+        _vanillaVertexShader = null;
+        _vanillaTileShader = null;
+    }
 
     public static void Draw(this SpriteBatch spriteBatch, Texture2D texture, System.Drawing.RectangleF destinationRectangle, Color color)
     {

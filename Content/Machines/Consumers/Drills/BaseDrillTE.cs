@@ -114,10 +114,10 @@ public abstract class BaseDrillTE : ConsumerTE
     protected void SampleTilesUnderMachine()
     {
         Point16 origin = TileObjectData.TopLeft(Position.X, Position.Y);
-        int startX = origin.X;
-        int startY = origin.Y + MachineTile.Height; // first row directly below footprint
         int w = SampleGridWidth;
         int h = SampleGridHeight;
+        int startX = origin.X + (MachineTile.Width - w) / 2;
+        int startY = origin.Y + MachineTile.Height; // first row directly below footprint
 
         SampledItems = new int[w * h];
         for (int row = 0; row < h; row++)

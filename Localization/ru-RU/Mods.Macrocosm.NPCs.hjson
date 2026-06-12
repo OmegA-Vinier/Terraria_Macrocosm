@@ -74,6 +74,8 @@ MoonChampion: {
 		SolarStorm3: Похоже, что Солнце разозлилось, человек! Берегись, иногда устрашающие чудовища едут верхом на солнечных ветрах, с ними шутки плохи!
 		SolarStorm4: Ты чувствуешь вкус металла, человек?
 	}
+
+	// Census.SpawnCondition: Conditions unknown
 }
 
 Clavite: {

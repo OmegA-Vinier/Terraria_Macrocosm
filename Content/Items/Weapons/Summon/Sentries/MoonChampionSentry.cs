@@ -36,7 +36,8 @@ public class MoonChampionSentry : ModItem
         position = Main.MouseWorld;
         if (!Collision.SolidTiles(position, 42, 46))
         {
-            Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, type, damage, 0f);
+            Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, 0f, player.whoAmI);
+            projectile.originalDamage = Item.damage;
             player.UpdateMaxTurrets();
         }
 

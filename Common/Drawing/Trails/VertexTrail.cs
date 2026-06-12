@@ -44,9 +44,18 @@ public abstract class VertexTrail : IModType
         VertexStrip vertexStrip = new();
         MiscShaderData trailShader = TrailShader;
 
-        InternalUpdate(trailShader);
+        if (trailShader?.Shader is null)
+            return;
 
-        trailShader.Apply();
+        InternalUpdate(trailShader);
+        try
+        {
+            trailShader.Apply();
+        }
+        catch (System.NullReferenceException)
+        {
+            return;
+        }
 
         vertexStrip.PrepareStripWithProceduralPadding(positions[StartIndex..], rotations[StartIndex..], TrailColors, TrailWidths, offset - Main.screenPosition, false, true);
         vertexStrip.DrawTrail();

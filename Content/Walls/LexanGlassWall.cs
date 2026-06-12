@@ -9,6 +9,7 @@ public class LexanGlassWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallLight[Type] = true;
+        Main.wallHouse[Type] = true;
         AddMapEntry(new Color(20, 20, 20));
     }
 }

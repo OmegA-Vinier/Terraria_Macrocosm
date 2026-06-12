@@ -10,7 +10,7 @@ public class MissileTrail : VertexTrail
 {
     private MiscShaderData shader;
 
-    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "RainbowRod");
+    public override MiscShaderData TrailShader => shader ??= new MiscShaderData(Utility.VanillaVertexShader, "MagicMissile");
     public override float Saturation => -1.9f;
 
     public override int StartIndex => 0;
